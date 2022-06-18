@@ -1,10 +1,13 @@
 import keyboard
-
-from interface import interface
+from interface import Menu
 
 if __name__ == '__main__':
-        interface(0, 0, 0, 0)
-        print(f'\nTecla pressionada: {keyboard.read_key()}')
-        
+    menu = Menu()
+
+    while True:
+        menu.interface(0, 0, 0, 0)
+        keyboard.read_key()
+        menu.clear()
+
         if keyboard.is_pressed('esc'):
-            print("\n" * 30)
+            break
