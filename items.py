@@ -1,9 +1,7 @@
 class Item:
     def __init__(self, name, cost, cps, cpc):
         self.name = name
-
         self.cost = cost
-
         self.cps = cps  # cookies per second
         self.cpc = cpc  # cookies per click
 
