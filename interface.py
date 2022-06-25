@@ -16,6 +16,8 @@ class Menu:
         mensagem = (10 - len(f'{self._cookie}')) * ' ' + f'{self._cookie}'
         return mensagem
 
+    def adc_cookies(self):
+        self._cookie += self.cpc
 
     _bold = "\033[1m"
     _brown = rgb(170, 120, 80)
@@ -48,7 +50,7 @@ class Menu:
     
     
                   Certifique-se de pressionar [S] para salvar seu progresso!
-    """)
+""")
 
     @staticmethod
     def clear():
