@@ -1,15 +1,16 @@
 from os import system
 
+
 def rgb(r, g, b):
     return f"\033[38;2;{r};{g};{b}m"
 
 
 class Menu:
-    def __init__(self, cookie, cps, cpc, itens):
+    def __init__(self, cookie: int, cps: int, cpc: int, items: list):
         self._cookie = cookie
         self.cps = cps
         self.cpc = cpc
-        self.itens = itens
+        self.items = items
     
     @property
     def cookie(self):
@@ -30,7 +31,7 @@ class Menu:
         ───────────────────────────────────────────────────────────────────────────────     
            {self.cookie} 🍪                         CPS: {self.cps} (cookies por segundo)                 
                                                  CPC: {self.cpc} (cookies por enter)              
-                                                 Items: {self.itens}
+                                                 Items: {sum(self.items)}
     
     
                         Loja 🛒                            Notícias 📰                          

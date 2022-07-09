@@ -2,9 +2,9 @@ import keyboard
 from interface import Menu
 
 if __name__ == '__main__':
-    id = input("Qual o seu ID? ")
+    id_ = input("Qual o seu ID? ")
 
-    menu = Menu(0, 0, 1, 0)
+    menu = Menu(0, 0, 1, [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
 
     while True:
         menu.interface()

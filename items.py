@@ -1,5 +1,5 @@
 class Item:
-    def __init__(self, name, cost, cps, cpc):
+    def __init__(self, name: str, cost: int, cps: float, cpc: float):
         self.name = name
         self.cost = cost
         self.cps = cps  # cookies per second
@@ -10,6 +10,19 @@ class Item:
 
     def update_cost(self):
         self.cost += self.cost // 6
+
+
+class Upgrade:
+
+    def __init__(self, items: list, upgrades: list):
+        self.items = items
+        self.upgrades = upgrades
+
+    def load_upgrades(self):
+        for item, upgrades in zip(self.items, self.upgrades):
+            for upgrade in range(upgrades):
+                item.update_cost()
+                # yield item.cps, item.cpc
 
 
 Cursor = Item('Cursor', 15, 0.1, 0)
