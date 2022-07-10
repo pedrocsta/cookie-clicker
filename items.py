@@ -17,10 +17,10 @@ class Item:
     def upgrade(self, cookies: float, cps: float, cpc: float):
         if cookies < self.cost:
             return cookies, cps, cpc
-
+        cost = self.cost
         self.update_cost()
 
-        return cookies - self.cost, cps + self.cps, cpc + self.cpc
+        return cookies - cost, cps + self.cps, cpc + self.cpc
 
 
 class Upgrade:
