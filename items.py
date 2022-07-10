@@ -25,8 +25,8 @@ class Item:
 
 class Upgrade:
 
-    def __init__(self, items: list, upgrades: list):
-        self.items = items
+    def __init__(self, items_: list, upgrades: list):
+        self.items = items_
         self.upgrades = upgrades
 
     def load_upgrades(self):
@@ -35,19 +35,23 @@ class Upgrade:
                 yield item.update_cost()
 
 
-Cursor = Item('Cursor', 15, 0.1, 0)
-Grandma = Item('Grandma', 100, 1, 0)
-Fingers = Item('Fingers', 400, 1, 1)
-Farm = Item('Farm', 1100, 8, 1)
-Mine = Item('Mine', 12000, 47, 1)
-Factory = Item('Factory', 130000, 260, 2)
-Bank = Item('Bank', 1400000, 1400, 0)
-Temple = Item('Temple', 2000000, 7800, 1)
-Wizard_Tower = Item('Wizard Tower', 330000000, 44000, 4)
-Shipment = Item('Shipment', 5100000000, 260000, 0)
-Alchemy_Lab = Item('Alchemy Lab', 75000000000, 1600000, 3)
-Portal = Item('Portal', 1000000000000, 10000000, 6)
-Time_Machine = Item('Time Machine', 14000000000000, 65000000, 6)
-Cookie_Monster = Item('Cookie Monster', 180000, 350, 70)
-Blaster = Item('Blaster', 20000000, 0, 3500)
-Hacker = Item('Hacker', 200000000000000, 6000000000000, 1000000000)
+def _get_items():
+    yield Item('Cursor', 15, 0.1, 0)
+    yield Item('Grandma', 100, 1, 0)
+    yield Item('Fingers', 400, 1, 1)
+    yield Item('Farm', 1100, 8, 1)
+    yield Item('Mine', 12000, 47, 1)
+    yield Item('Factory', 130000, 260, 2)
+    yield Item('Bank', 1400000, 1400, 0)
+    yield Item('Temple', 2000000, 7800, 1)
+    yield Item('Wizard Tower', 330000000, 44000, 4)
+    yield Item('Shipment', 5100000000, 260000, 0)
+    yield Item('Alchemy Lab', 75000000000, 1600000, 3)
+    yield Item('Portal', 1000000000000, 10000000, 6)
+    yield Item('Time Machine', 14000000000000, 65000000, 6)
+    yield Item('Cookie Monster', 180000, 350, 70)
+    yield Item('Blaster', 20000000, 0, 3500)
+    yield Item('Hacker', 200000000000000, 6000000000000, 1000000000)
+
+
+items = list(_get_items())

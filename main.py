@@ -1,19 +1,19 @@
 import keyboard
-from interface import Menu
+from interface import CookieClicker
 
 if __name__ == '__main__':
     id_ = input("Qual o seu ID? ")
 
-    menu = Menu(0, 0, 1, [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+    game = CookieClicker(0, [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100000])
+    game.load_upgrades()
 
     while True:
-        menu.interface()
+        game.interface()
         keyboard.read_key()
-        menu.clear()
+        game.clear()
 
         if keyboard.is_pressed('enter'):
-            menu.adc_cookies()
+            game.adc_cookies()
 
         if keyboard.is_pressed('esc'):
             break
-            

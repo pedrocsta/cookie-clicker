@@ -1,37 +1,47 @@
 from os import system
+from items import Upgrade, items
 
 
 def rgb(r, g, b):
     return f"\033[38;2;{r};{g};{b}m"
 
 
-class Menu:
-    def __init__(self, cookie: int, cps: int, cpc: int, items: list):
-        self._cookie = cookie
-        self.cps = cps
-        self.cpc = cpc
-        self.items = items
-    
-    @property
-    def cookie(self):
-        mensagem = (10 - len(f'{self._cookie}')) * ' ' + f'{self._cookie}'
-        return mensagem
-
-    def adc_cookies(self):
-        self._cookie += self.cpc
+class CookieClicker:
 
     _bold = "\033[1m"
     _brown = rgb(170, 120, 80)
     _l_brown = rgb(190, 140, 100)
     _fecha = "\033[0m"
 
+    def __init__(self, cookies: float, upgrades: list):
+        self._cookies = cookies
+        self._cps = self._cpc = 0
+        self.upgrades = upgrades
+    
+    @property
+    def cookie(self): return (10 - len(f'{self._cookies}')) * ' ' + f'{self._cookies}'
+
+    @staticmethod
+    def clear(): system('cls')
+
+    def load_upgrades(self):
+        up = Upgrade(items, self.upgrades)
+
+        for cps, cpc in up.load_upgrades():
+            self._cps += cps
+            self._cpc += cpc
+
+    def adc_cookies(self):
+        self._cookies += self._cpc
+
     def interface(self):
         print(f"""\n
                     {self._bold}{self._l_brown}Cookie {self._brown}Clicker{self._fecha} 🍪            Estatísticas 📈                        
         ───────────────────────────────────────────────────────────────────────────────     
-           {self.cookie} 🍪                         CPS: {self.cps} (cookies por segundo)                 
-                                                 CPC: {self.cpc} (cookies por enter)              
-                                                 Items: {sum(self.items)}
+           {self.cookie} 🍪                         
+                                                 CPS: {self._cps} (cookies por segundo)                 
+                                                 CPE: {self._cpc} (cookies por enter)              
+                                                 Items: {sum(self.upgrades)}
     
     
                         Loja 🛒                            Notícias 📰                          
@@ -52,7 +62,3 @@ class Menu:
     
                   Certifique-se de pressionar [S] para salvar seu progresso!
 """)
-
-    @staticmethod
-    def clear():
-        system('cls')
