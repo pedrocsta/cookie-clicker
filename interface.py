@@ -31,6 +31,9 @@ class CookieClicker:
             self._cps += cps
             self._cpc += cpc
 
+    def save_game(self):
+        pass
+
     def adc_cookies(self):
         self._cookies += self._cpc
 
@@ -40,7 +43,7 @@ class CookieClicker:
         ───────────────────────────────────────────────────────────────────────────────     
            {self.cookie} 🍪                         
                                                  CPS: {self._cps} (cookies por segundo)                 
-                                                 CPE: {self._cpc} (cookies por enter)              
+                                                 CPC: {self._cpc} (cookies por click)              
                                                  Items: {sum(self.upgrades)}
     
     
