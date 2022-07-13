@@ -9,30 +9,32 @@ class Item:
     def __str__(self):
         return self.name
 
-    def update_cost(self):
+    def update_cost(self) -> tuple:
         self.cost += self.cost // 6
 
         return self.cps, self.cpc
 
-    def upgrade(self, cookies: float, cps: float, cpc: float):
-        if cookies < self.cost:
-            return cookies, cps, cpc
-        cost = self.cost
-        self.update_cost()
 
-        return cookies - cost, cps + self.cps, cpc + self.cpc
+class Upgrades:
 
-
-class Upgrade:
-
-    def __init__(self, items_: list, upgrades: list):
+    def __init__(self, items_: list[Item], upgrades: list[int]):
         self.items = items_
         self.upgrades = upgrades
 
-    def load_upgrades(self):
+    def load_upgrades(self) -> tuple:
         for item, upgrades in zip(self.items, self.upgrades):
             for upgrade in range(upgrades):
                 yield item.update_cost()
+
+    def upgrade(self, item: Item, cookies: float) -> tuple:
+        cost = cps = cpc = 0
+        if cookies >= item.cost:
+            index = self.items.index(item)
+            cps, cpc, cost = item.cps, item.cpc, item.cost
+            self.upgrades[index] += 1
+            self.items[index].update_cost()
+
+        return cost, cps, cpc
 
 
 def _get_items():
