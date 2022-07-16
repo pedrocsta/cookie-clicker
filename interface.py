@@ -1,4 +1,5 @@
 from os import system
+from threading import Thread
 from items import Upgrades, items
 from random import randint, choice
 from news import starter_news, intermediate_news, pro_news, legendary_news, mythical_news
@@ -31,16 +32,23 @@ class CookieClicker:
 
     def __init__(self, cookies: float, upgrades: list[int]):
         self._cookies = cookies
-        self._cps = self._cpc = 0
+        self._cps, self._cpc = 0, 1
         self._golden_cookie = ''
         self.upgrades = Upgrades(items, upgrades)
         self.headline = 'Olá :)'
+
+        Thread(target=self._auto_click).start()
     
     @property
     def cookie(self): return (10 - len(f'{round(self._cookies, 2)}')) * ' ' + f'{round(self._cookies, 2)}'
 
     @staticmethod
     def clear(): system('cls')
+
+    def _auto_click(self):
+        while True:
+            self._cookies += self._cps
+            time.sleep(1)
 
     def load_upgrades(self):
         for cps, cpc in self.upgrades.load_upgrades():
@@ -56,7 +64,7 @@ class CookieClicker:
         self._golden_cookie = f"{self._golden}[G] COOKIE DE OURO!!!{self._reset}" if randint(1, 100) == 1 else ''
 
     def given_golden_cookie(self):
-        self._cookies += self._cookies // (4/3) if self._golden_cookie else self._cpc // 10
+        self._cookies += int(self._cookies / (4/3)) if self._golden_cookie else self._cpc // 10
 
     def upgrade(self, index: int):
         cookies, cps, cpc = self.upgrades.upgrade(self.sort_shop[index], self._cookies)
@@ -67,10 +75,10 @@ class CookieClicker:
             news = {starter_news: 0, intermediate_news: 100, pro_news: 1000, legendary_news: 15000, mythical_news: 200000}
 
             for key, value in news.items():
-                if self._cookies >= value:
-                    self.headline = choice(key)
-                else:
+                if self._cookies < value:
                     break
+
+                self.headline = choice(key)
 
     @property
     def sort_shop(self):
@@ -88,7 +96,7 @@ class CookieClicker:
 
         return self.upgrades.items[index - 3:index + 2]
 
-    @Delay.sleep(.04)
+    @Delay.sleep(.08)
     def interface(self):
         shop = self.sort_shop
         self.draw_golden_cookie()

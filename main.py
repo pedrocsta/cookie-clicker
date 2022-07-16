@@ -4,7 +4,7 @@ from interface import CookieClicker
 if __name__ == '__main__':
     id_ = input("Qual o seu ID? ")
 
-    game = CookieClicker(0, [0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+    game = CookieClicker(0, [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
     game.load_upgrades()
 
     while True:
