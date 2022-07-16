@@ -18,12 +18,13 @@ class Delay:
             def wrapper(self, *args, **kwargs):
                 foo(self, *args, **kwargs)
                 time.sleep(delay)
+
             return wrapper
+
         return features
 
 
 class CookieClicker:
-
     _bold = "\033[1m"
     _brown = rgb(170, 120, 80)
     _l_brown = rgb(190, 140, 100)
@@ -38,12 +39,10 @@ class CookieClicker:
         self.headline = 'Olá :)'
 
         Thread(target=self._auto_click).start()
-    
-    @property
-    def cookie(self): return (10 - len(f'{round(self._cookies, 2)}')) * ' ' + f'{round(self._cookies, 2)}'
 
     @staticmethod
-    def clear(): system('cls')
+    def clear():
+        system('cls')
 
     def _auto_click(self):
         while True:
@@ -64,7 +63,7 @@ class CookieClicker:
         self._golden_cookie = f"{self._golden}[G] COOKIE DE OURO!!!{self._reset}" if randint(1, 100) == 1 else ''
 
     def given_golden_cookie(self):
-        self._cookies += int(self._cookies / (4/3)) if self._golden_cookie else self._cpc // 10
+        self._cookies += int(self._cookies / (4 / 3)) if self._golden_cookie else self._cpc // 10
 
     def upgrade(self, index: int):
         cookies, cps, cpc = self.upgrades.upgrade(self.sort_shop[index], self._cookies)
@@ -72,7 +71,8 @@ class CookieClicker:
 
     def new_change(self):
         if randint(1, 10) == 1:
-            news = {starter_news: 0, intermediate_news: 100, pro_news: 1000, legendary_news: 15000, mythical_news: 200000}
+            news = {starter_news: 0, intermediate_news: 100, pro_news: 1000, legendary_news: 15000,
+                    mythical_news: 200000}
 
             for key, value in news.items():
                 if self._cookies < value:
@@ -100,21 +100,25 @@ class CookieClicker:
     def interface(self):
         shop = self.sort_shop
         self.draw_golden_cookie()
+
+        def cookies(): return (10 - len(f'{round(self._cookies, 2)}')) * ' ' + f'{round(self._cookies, 2)}'
+        def spaces(s): return (25 - len(shop[s].name) - len(str(shop[s].cost))) * ' '
+
         print(f"""\n
                     {self._bold}{self._l_brown}Cookie {self._brown}Clicker{self._reset} 🍪            Estatísticas 📈                        
         ───────────────────────────────────────────────────────────────────────────────     
-           {self.cookie} 🍪                         
+           {cookies()} 🍪                         
                                                  CPS: {round(self._cps, 2)} (cookies por segundo)                 
                                                  CPC: {round(self._cpc, 2)} (cookies por click)              
-                                                 Items: {sum(self.upgrades.upgrades)}
+                                                 Itens: {sum(self.upgrades.upgrades)}
     
     
                         Loja 🛒                            Notícias 📰                          
         ───────────────────────────────────────────────────────────────────────────────
-              [1] {shop[0].name}: {shop[0].cost} 🍪{(25-len(shop[0].name)-len(str(shop[0].cost)))*' '}{self._bold}{' '.join(self.headline.split()[:6])}{self._reset}
-              [2] {shop[1].name}: {shop[1].cost} 🍪{(25-len(shop[1].name)-len(str(shop[1].cost)))*' '}{self._bold}{' '.join(self.headline.split()[6:])}{self._reset}
+              [1] {shop[0].name}: {shop[0].cost} 🍪{spaces(0)}{self._bold}{' '.join(self.headline.split()[:6])}{self._reset}
+              [2] {shop[1].name}: {shop[1].cost} 🍪{spaces(1)}{self._bold}{' '.join(self.headline.split()[6:])}{self._reset}
               [3] {shop[2].name}: {shop[2].cost} 🍪
-              [4] {shop[3].name}: {shop[3].cost} 🍪{(25-len(shop[3].name)-len(str(shop[3].cost)))*' '}{self._golden_cookie}
+              [4] {shop[3].name}: {shop[3].cost} 🍪{spaces(3)}{self._golden_cookie}
               [5] {shop[4].name}: {shop[4].cost} 🍪
     
 
