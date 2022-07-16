@@ -1,4 +1,4 @@
-starter_news = [
+starter_news = (
     "Você sente vontade de fazer biscoitos. Mas ninguém quer comer seus biscoitos.", 
     "Seu primeiro lote vai para o lixo. O guaxinim da vizinhança mal a toca.", 
     "Sua família aceita experimentar alguns de seus cookies.", 
@@ -8,9 +8,9 @@ starter_news = [
     "Seus biscoitos trazem todos os meninos para o quintal.", 
     "Your cookies now have their own website!", 
     "Seu negócio de biscoitos se expandiu muito."
-]
+)
 
-intermediate_news = [
+intermediate_news = (
     "Seus cookies valem muito dinheiro.",
     "Seus cookies vendem muito bem em países distantes.",
     "As pessoas vêm de muito longe para provar seus biscoitos.",
@@ -20,9 +20,9 @@ intermediate_news = [
     "Seus cookies foram nomeados como parte das maravilhas do mundo.",
     "Os livros de história agora incluem um capítulo inteiro sobre seus cookies.",
     "Seus cookies foram colocados sob vigilância do governo."
-]
+)
 
-pro_news = [
+pro_news = (
     "O planeta inteiro está gostando dos seus biscoitos!",
     "Criaturas estranhas de planetas vizinhos desejam experimentar seus biscoitos.",
     "Deuses anciões de todo o cosmos despertaram para saborear seus biscoitos.",
@@ -34,9 +34,9 @@ pro_news = [
     '"Biscoitos úmidos." - Avó',
     '"Nós subimos." - Avó',
     '"Venha dar um beijo na vovó." - Avó'
-]
+)
 
-legendary_news = [
+legendary_news = (
     "Fazendas de biscoitos suspeitas de empregar força de trabalho idosa não declarada!",
     "Fazendas de biscoitos liberam chocolate nocivo em nossos rios, diz cientista!",
     "A controvérsia do chocolate geneticamente modificado atinge os produtores de biscoitos!",
@@ -47,9 +47,9 @@ legendary_news = [
     "Minas de chocolate encontradas para causar terremotos e afundar buracos!",
     "Mina de chocolate dá errado, inunda vila em chocolate!",
     "Nosso planeta está ficando mais leve? Especialistas examinam os resultados da mineração intensiva de chocolate."
-]
+)
 
-mythical_news = [
+mythical_news = (
     "Fábricas de biscoitos ligadas ao aquecimento global!",
     "Fábricas de biscoitos envolvidas na controvérsia do clima do chocolate!",
     "Fábricas de biscoitos em greve, lacaios robóticos empregados para substituir a força de trabalho!",
@@ -58,4 +58,5 @@ mythical_news = [
     "Cookies lentamente se aproximando como um concorrente da moeda tradicional!",
     "A maioria das padarias agora está equipada com caixas eletrônicos para permitir saques e depósitos fáceis de biscoitos.",
     "Economia de cookies agora forte o suficiente para permitir cofres enormes que funcionam como piscinas!"
-]
+
+)

@@ -6,9 +6,6 @@ class Item:
         self.cps = cps  # cookies per second
         self.cpc = cpc  # cookies per click
 
-    def __str__(self):
-        return self.name
-
     def update_cost(self) -> tuple:
         self.cost += self.cost // 6
 
